@@ -1,0 +1,33 @@
+{
+  "header": {
+    "logo": "جايديكس للتعليم",
+    "nav": {
+      "home": "الرئيسية",
+      "destinations": "الوجهات",
+      "courses": "الدورات",
+      "blog": "المدونة",
+      "about": "من نحن"
+    },
+    "lang": {
+      "language": "اللغة",
+      "switchToArabic": "التبديل إلى العربية",
+      "switchToEnglish": "التبديل إلى الإنجليزية"
+    }
+  },
+  "hero": {
+    "wantToStudyIn": "أريد الدراسة في",
+    "toGet": "للحصول على",
+    "in": "في",
+    "countryPlaceholder": "الدولة",
+    "levelPlaceholder": "الدرجة الدراسية",
+    "majorPlaceholder": "التخصص",
+    "letsGo": "فلننطلق!",
+    "desc": "اعثر وقدّم على البرامج والمنح المناسبة لك في ٣٤ دولة.",
+    "stats": {
+      "programs": "برامج",
+      "countries": "دول",
+      "scholarships": "منح",
+      "application": "طلب واحد"
+    }
+  }
+}

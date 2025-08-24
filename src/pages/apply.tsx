@@ -87,8 +87,12 @@ export default function Apply() {
             </label>
             <input
               value={formData.country}
-              readOnly
               className="font-semibold w-full border-b-2 border-primary bg-transparent focus:outline-none py-2 text-lg"
+              onChange={(e) =>
+                setFormData({ ...formData, country: e.target.value })
+              }
+              placeholder="Country"
+              required
             />
           </div>
 
@@ -99,7 +103,11 @@ export default function Apply() {
             </label>
             <input
               value={formData.degree}
-              readOnly
+              onChange={(e) =>
+                setFormData({ ...formData, degree: e.target.value })
+              }
+              placeholder="Degree"
+              required
               className="w-full border-b-2 border-primary bg-transparent focus:outline-none py-2 text-lg"
             />
           </div>
@@ -111,7 +119,11 @@ export default function Apply() {
             </label>
             <input
               value={formData.major}
-              readOnly
+              onChange={(e) =>
+                setFormData({ ...formData, major: e.target.value })
+              }
+              placeholder="Major"
+              required
               className="w-full border-b-2 border-primary bg-transparent focus:outline-none py-2 text-lg"
             />
           </div>

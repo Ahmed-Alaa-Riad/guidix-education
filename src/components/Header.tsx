@@ -1,213 +1,202 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useState } from "react";
-
-// export default function Header() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   return (
-//     <header className="bg-secondary text-white">
-//       <div className="container mx-auto flex justify-between items-center p-4">
-//         {/* Logo */}
-//         <div className="flex items-center space-x-3">
-//           <Image
-//             src="/logo.png"
-//             alt="GuidixEducation"
-//             width={40}
-//             height={40}
-//             className="rounded"
-//           />
-//           <span className="text-2xl font-bold">GuidixEducation</span>
-//         </div>
-
-//         {/* Desktop Menu */}
-//         <nav className="hidden md:flex space-x-6">
-//           <Link href="/" className="hover:text-primary font-semibold">
-//             Home
-//           </Link>
-//           <Link
-//             href="/destinations"
-//             className="hover:text-primary font-semibold"
-//           >
-//             Destinations
-//           </Link>
-//           <Link href="/courses" className="hover:text-primary font-semibold">
-//             Courses
-//           </Link>
-//           <Link href="/blog" className="hover:text-primary font-semibold">
-//             Blog
-//           </Link>
-//           <Link href="/about" className="hover:text-primary font-semibold">
-//             About Us
-//           </Link>
-//         </nav>
-
-//         {/* Mobile Hamburger Button */}
-//         <button
-//           onClick={() => setMenuOpen(!menuOpen)}
-//           className="md:hidden focus:outline-none"
-//         >
-//           <svg
-//             className="w-6 h-6"
-//             fill="none"
-//             stroke="currentColor"
-//             viewBox="0 0 24 24"
-//           >
-//             {menuOpen ? (
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 d="M6 18L18 6M6 6l12 12"
-//               />
-//             ) : (
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 d="M4 6h16M4 12h16M4 18h16"
-//               />
-//             )}
-//           </svg>
-//         </button>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {menuOpen && (
-//         <nav className="md:hidden bg-secondary px-4 pb-4 space-y-2">
-//           <Link href="/" className="block hover:text-primary font-semibold">
-//             Home
-//           </Link>
-//           <Link
-//             href="/destinations"
-//             className="block hover:text-primary font-semibold"
-//           >
-//             Destinations
-//           </Link>
-//           <Link
-//             href="/courses"
-//             className="block hover:text-primary font-semibold"
-//           >
-//             Courses
-//           </Link>
-//           <Link href="/blog" className="block hover:text-primary font-semibold">
-//             Blog
-//           </Link>
-//           <Link
-//             href="/about"
-//             className="block hover:text-primary font-semibold"
-//           >
-//             About Us
-//           </Link>
-//         </nav>
-//       )}
-//     </header>
-//   );
-// }
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import ReactCountryFlag from "react-country-flag";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const { t, i18n } = useTranslation("common");
+
+  const switchLanguage = (locale: string) => {
+    router.push(router.asPath, router.asPath, { locale });
+  };
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-50">
+    <header className=" fixed w-full z-50 shadow">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
-        {/* Logo */}
+        {/* Logo - working properly */}
         <div className="flex items-center space-x-3">
-          <Image
-            src="/logo.png"
-            alt="GuidixEducation"
-            width={50}
-            height={50}
-            className="rounded"
-          />
-          <span className="text-2xl font-extrabold text-primary">
-            GuidixEducation
+          <span className="text-xl font-bold text-primary">
+            {t("header.logo")}
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8 font-semibold uppercase tracking-wide text-gray-700">
+        {/* Menu */}
+        <nav className="hidden md:flex items-center space-x-8 font-semibold uppercase tracking-wide text-dark">
           <Link href="/" className="hover:text-primary transition-colors">
-            Home
-          </Link>
-          <Link href="/destinations" className="hover:text-primary">
-            Destinations
-          </Link>
-          <Link href="/courses" className="hover:text-primary">
-            Courses
-          </Link>
-          <Link href="/blog" className="hover:text-primary">
-            Blog
-          </Link>
-          <Link href="/about" className="hover:text-primary">
-            About Us
+            {t("header.nav.home")}
           </Link>
           <Link
-            href="/login"
-            className="ml-6 bg-primary text-white px-5 py-2 rounded-full shadow-lg hover:bg-primary/90 transition"
+            href="/destinations"
+            className="hover:text-primary transition-colors"
           >
-            Login
+            {t("header.nav.destinations")}
           </Link>
+          <Link
+            href="/courses"
+            className="hover:text-primary transition-colors"
+          >
+            {t("header.nav.courses")}
+          </Link>
+          <Link href="/blog" className="hover:text-primary transition-colors">
+            {t("header.nav.blog")}
+          </Link>
+          <Link href="/about" className="hover:text-primary transition-colors">
+            {t("header.nav.about")}
+          </Link>
+
+          {/* Language Switcher */}
+          <div className="flex items-center space-x-3 ml-6">
+            <button
+              onClick={() => switchLanguage("ar")}
+              className="transition-all duration-200 hover:scale-105"
+              aria-label={t("header.lang.switchToArabic")}
+            >
+              <ReactCountryFlag
+                countryCode="EG"
+                svg
+                style={{
+                  width: "2em",
+                  height: "2em",
+                  borderRadius: "4px",
+                  boxShadow: "0 0 2px rgba(0,0,0,0.3)",
+                }}
+              />
+            </button>
+            <button
+              onClick={() => switchLanguage("en")}
+              className="transition-all duration-200 hover:scale-105"
+              aria-label={t("header.lang.switchToEnglish")}
+            >
+              <ReactCountryFlag
+                countryCode="GB"
+                svg
+                style={{
+                  width: "2em",
+                  height: "2em",
+                  borderRadius: "4px",
+                  boxShadow: "0 0 2px rgba(0,0,0,0.3)",
+                }}
+              />
+            </button>
+          </div>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Menu Button */}
         <button
+          className="md:hidden flex flex-col justify-center items-center"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden focus:outline-none text-gray-700"
         >
-          <svg
-            className="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          <span
+            className={`bg-dark block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+              menuOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+            }`}
+          ></span>
+          <span
+            className={`bg-dark block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
+              menuOpen ? "opacity-0" : "opacity-100"
+            }`}
+          ></span>
+          <span
+            className={`bg-dark block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+              menuOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+            }`}
+          ></span>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <nav className="md:hidden bg-white shadow-lg px-6 pb-4 space-y-3 text-gray-700 font-semibold uppercase tracking-wide">
-          <Link href="/" className="block hover:text-primary">
-            Home
-          </Link>
-          <Link href="/destinations" className="block hover:text-primary">
-            Destinations
-          </Link>
-          <Link href="/courses" className="block hover:text-primary">
-            Courses
-          </Link>
-          <Link href="/blog" className="block hover:text-primary">
-            Blog
-          </Link>
-          <Link href="/about" className="block hover:text-primary">
-            About Us
-          </Link>
-          <Link
-            href="/login"
-            className="inline-block mt-2 bg-primary text-white px-5 py-2 rounded-full shadow-lg hover:bg-primary/90 transition"
-          >
-            Login
-          </Link>
-        </nav>
+        <div className="md:hidden  border-t shadow-lg">
+          <nav className="flex flex-col space-y-4 px-6 py-4">
+            <Link
+              href="/"
+              className="hover:text-primary transition-colors font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("header.nav.home")}
+            </Link>
+            <Link
+              href="/destinations"
+              className="hover:text-primary transition-colors font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("header.nav.destinations")}
+            </Link>
+            <Link
+              href="/courses"
+              className="hover:text-primary transition-colors font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("header.nav.courses")}
+            </Link>
+            <Link
+              href="/blog"
+              className="hover:text-primary transition-colors font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("header.nav.blog")}
+            </Link>
+            <Link
+              href="/about"
+              className="hover:text-primary transition-colors font-semibold"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("header.nav.about")}
+            </Link>
+
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center space-x-3 pt-4 border-t">
+              <span className="text-sm font-semibold text-gray-600">
+                {t("header.lang.language")}:
+              </span>
+              <button
+                onClick={() => {
+                  switchLanguage("ar");
+                  setMenuOpen(false);
+                }}
+                className={`transition-all duration-200 ${
+                  i18n.language === "ar"
+                    ? "ring-2 ring-primary ring-offset-2"
+                    : ""
+                }`}
+              >
+                <ReactCountryFlag
+                  countryCode="EG"
+                  svg
+                  style={{
+                    width: "1.5em",
+                    height: "1.5em",
+                    borderRadius: "4px",
+                  }}
+                />
+              </button>
+              <button
+                onClick={() => {
+                  switchLanguage("en");
+                  setMenuOpen(false);
+                }}
+                className={`transition-all duration-200 ${
+                  i18n.language === "en"
+                    ? "ring-2 ring-primary ring-offset-2"
+                    : ""
+                }`}
+              >
+                <ReactCountryFlag
+                  countryCode="GB"
+                  svg
+                  style={{
+                    width: "1.5em",
+                    height: "1.5em",
+                    borderRadius: "4px",
+                  }}
+                />
+              </button>
+            </div>
+          </nav>
+        </div>
       )}
     </header>
   );

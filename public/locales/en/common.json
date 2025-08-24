@@ -1,0 +1,33 @@
+{
+  "header": {
+    "logo": "Guidix Education",
+    "nav": {
+      "home": "Home",
+      "destinations": "Destinations",
+      "courses": "Courses",
+      "blog": "Blog",
+      "about": "About Us"
+    },
+    "lang": {
+      "language": "Language",
+      "switchToArabic": "Switch to Arabic",
+      "switchToEnglish": "Switch to English"
+    }
+  },
+  "hero": {
+    "wantToStudyIn": "I WANT TO STUDY IN",
+    "toGet": "TO GET",
+    "in": "IN",
+    "countryPlaceholder": "COUNTRY",
+    "levelPlaceholder": "STUDY LEVEL",
+    "majorPlaceholder": "MAJOR",
+    "letsGo": "Let’s go!",
+    "desc": "Find and apply to your best-fit programs and scholarships in 34 countries.",
+    "stats": {
+      "programs": "Programs",
+      "countries": "Countries",
+      "scholarships": "Scholarships",
+      "application": "Application"
+    }
+  }
+}
