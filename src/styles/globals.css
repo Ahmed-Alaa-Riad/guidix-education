@@ -13,15 +13,19 @@
 
 /* Global styles */
 body {
-  background-image: url("/BgImage.jpg"); /* ✅ Correct */
-  background-size: cover;
+  background-image: url("/BgImage1.jpg");
+  background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
-  font-family: var(--font-sans);
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  background-repeat: repeat; /* since it's a pattern */
+  position: relative;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6); /* white overlay → makes drawings lighter */
+  z-index: -1;
+}
+
 

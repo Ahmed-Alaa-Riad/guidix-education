@@ -62,95 +62,152 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative  min-h-screen flex items-center overflow-hidden pt-28">
-      <div className="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-12">
-        {/* Left text */}
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 xl:gap-20">
+        {/* Left content */}
         <div
-          className={`lg:w-1/2 space-y-8 ${
+          className={`w-full lg:w-1/2 space-y-4 sm:space-y-6 lg:space-y-8 ${
             isAR ? "text-right" : "text-left"
-          } text-center lg:text-inherit`}
+          } text-center lg:text-inherit order-2 lg:order-1`}
         >
-          <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-dark">
-            {t("hero.wantToStudyIn")}{" "}
-            <select
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              className="bg-primary/10 rounded-lg px-3 py-1 text-primary font-bold focus:outline-none cursor-pointer"
-              dir="ltr"
-            >
-              <option value="">{t("hero.countryPlaceholder")}</option>
-              {countries.map((c) => (
-                <option key={c}>{c}</option>
-              ))}
-            </select>
-          </h1>
+          {/* Main heading with inline select */}
+          <div className="space-y-2 sm:space-y-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-secondary">
+              <span className="block sm:inline">{t("hero.wantToStudyIn")}</span>{" "}
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="bg-primary/10 rounded-lg px-2 sm:px-3 py-1 sm:py-2
+                 text-primary font-semibold focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer 
+                 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl
+                 min-w-0 max-w-full inline-block mt-2 sm:mt-0"
+                dir={isAR ? "rtl" : "ltr"}
+              >
+                <option
+                  value=""
+                  className="text-secondary text-sm sm:text-base"
+                >
+                  {t("hero.countryPlaceholder")}
+                </option>
+                {countries.map((c) => (
+                  <option
+                    key={c}
+                    value={c}
+                    className="text-secondary bg-white text-xs sm:text-sm"
+                  >
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </h1>
 
-          <h2 className="text-3xl lg:text-4xl font-bold text-dark">
-            {t("hero.toGet")}{" "}
-            <select
-              value={degree}
-              onChange={(e) => setDegree(e.target.value)}
-              className="bg-primary/10 rounded-lg px-3 py-1 text-primary font-bold focus:outline-none cursor-pointer"
-            >
-              <option value="">{t("hero.levelPlaceholder")}</option>
-              <option>Bachelor&apos;s</option>
-              <option>Master&apos;s</option>
-              <option>PhD</option>
-            </select>
-          </h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-secondary">
+              <span className="block sm:inline">{t("hero.toGet")}</span>{" "}
+              <select
+                value={degree}
+                onChange={(e) => setDegree(e.target.value)}
+                className="bg-primary/10 rounded-lg px-2 sm:px-3 py-1 sm:py-2
+                 text-primary font-semibold focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer 
+                 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl
+                 min-w-0 max-w-full inline-block mt-2 sm:mt-0"
+                dir={isAR ? "rtl" : "ltr"}
+              >
+                <option
+                  value=""
+                  className="text-secondary text-sm sm:text-base"
+                >
+                  {t("hero.levelPlaceholder")}
+                </option>
+                <option className="text-secondary bg-white text-xs sm:text-sm">
+                  Bachelor&apos;s
+                </option>
+                <option className="text-secondary bg-white text-xs sm:text-sm">
+                  Master&apos;s
+                </option>
+                <option className="text-secondary bg-white text-xs sm:text-sm">
+                  PhD
+                </option>
+              </select>
+            </h2>
 
-          <h2 className="text-3xl lg:text-4xl font-bold text-dark">
-            {t("hero.in")}{" "}
-            <select
-              value={major}
-              onChange={(e) => setMajor(e.target.value)}
-              className="bg-primary/10 rounded-lg px-3 py-1 text-primary font-bold focus:outline-none cursor-pointer"
-            >
-              <option value="">{t("hero.majorPlaceholder")}</option>
-              {majors.map((m) => (
-                <option key={m}>{m}</option>
-              ))}
-            </select>
-          </h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-secondary">
+              <span className="block sm:inline">{t("hero.in")}</span>{" "}
+              <select
+                value={major}
+                onChange={(e) => setMajor(e.target.value)}
+                className="bg-primary/10 rounded-lg px-2 sm:px-3 py-1 sm:py-2
+                 text-primary font-semibold focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer 
+                 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl
+                 min-w-0 max-w-full inline-block mt-2 sm:mt-0"
+                dir={isAR ? "rtl" : "ltr"}
+              >
+                <option
+                  value=""
+                  className="text-secondary text-sm sm:text-base"
+                >
+                  {t("hero.majorPlaceholder")}
+                </option>
+                {majors.map((m) => (
+                  <option
+                    key={m}
+                    className="text-secondary bg-white text-xs sm:text-sm"
+                    value={m}
+                  >
+                    {m}
+                  </option>
+                ))}
+              </select>
+            </h2>
+          </div>
 
-          <p className="text-lg max-w-lg mx-auto lg:mx-0 text-gray-600 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto lg:mx-0 text-gray-600 leading-relaxed px-2 sm:px-0">
             {t("hero.desc")}
           </p>
 
           <button
             onClick={handleGo}
-            className="bg-primary text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-lg"
+            className="bg-primary text-white font-bold px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full shadow-lg 
+            transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm sm:text-base lg:text-lg
+            active:scale-95"
           >
             {t("hero.letsGo")}
           </button>
 
           {/* Stats */}
           <div
-            className={`grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 text-dark ${
+            className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-10 lg:pt-12 text-secondary ${
               isAR ? "text-right" : ""
             }`}
           >
-            <div>
-              <p className="text-3xl font-extrabold text-primary">50 000+</p>
-              <p className="text-sm uppercase tracking-wide">
+            <div className="text-center lg:text-inherit">
+              <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-primary">
+                50K+
+              </p>
+              <p className="text-xs sm:text-sm lg:text-sm xl:text-base uppercase tracking-wide mt-1">
                 {t("hero.stats.programs")}
               </p>
             </div>
-            <div>
-              <p className="text-3xl font-extrabold text-primary">34+</p>
-              <p className="text-sm uppercase tracking-wide">
+            <div className="text-center lg:text-inherit">
+              <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-primary">
+                34+
+              </p>
+              <p className="text-xs sm:text-sm lg:text-sm xl:text-base uppercase tracking-wide mt-1">
                 {t("hero.stats.countries")}
               </p>
             </div>
-            <div>
-              <p className="text-3xl font-extrabold text-primary">$22B</p>
-              <p className="text-sm uppercase tracking-wide">
+            <div className="text-center lg:text-inherit">
+              <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-primary">
+                $22B
+              </p>
+              <p className="text-xs sm:text-sm lg:text-sm xl:text-base uppercase tracking-wide mt-1">
                 {t("hero.stats.scholarships")}
               </p>
             </div>
-            <div>
-              <p className="text-3xl font-extrabold text-primary">One</p>
-              <p className="text-sm uppercase tracking-wide">
+            <div className="text-center lg:text-inherit">
+              <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-primary">
+                One
+              </p>
+              <p className="text-xs sm:text-sm lg:text-sm xl:text-base uppercase tracking-wide mt-1">
                 {t("hero.stats.application")}
               </p>
             </div>
@@ -158,16 +215,21 @@ export default function HeroSection() {
         </div>
 
         {/* Right image */}
-        <div className="lg:w-1/2 flex justify-center relative">
-          <div className="relative w-100 h-100">
-            <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl ring-[12px] ring-primary/30">
+        <div className="w-full lg:w-1/2 flex justify-center items-start relative order-1 lg:order-2 lg:-mt-8 xl:-mt-12">
+          <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80">
+            <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-3 sm:ring-4 lg:ring-6 ring-primary/30 transition-transform duration-300 hover:scale-105">
               <Image
                 src="/images/1.jpg"
                 alt="Students studying abroad"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 hover:scale-110"
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 320px"
+                priority
               />
             </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-8 h-8 sm:w-12 sm:h-12 bg-primary/20 rounded-full blur-sm"></div>
+            <div className="absolute -bottom-6 -left-6 w-12 h-12 sm:w-16 sm:h-16 bg-secondary/20 rounded-full blur-sm"></div>
           </div>
         </div>
       </div>

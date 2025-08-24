@@ -10,14 +10,23 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>GuidixEducation</title>
+        <title>GuidixEducation - Study Abroad Made Easy</title>
+        <meta
+          name="description"
+          content="Find your dream university abroad with GuidixEducation. Access 50,000+ programs across 34+ countries with one application."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <main>
-        <HeroSection />
-        {/* Add Services, Testimonials, Call to Action etc. */}
-      </main>
-      <Footer />
+
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          {/* Add other sections here: Services, Testimonials, Call to Action etc. */}
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
