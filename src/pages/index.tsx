@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import Footer from "@/components/Footer";
 // Import required for translations
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -19,14 +17,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">
-          <HeroSection />
-          {/* Add other sections here: Services, Testimonials, Call to Action etc. */}
-        </main>
-        <Footer />
-      </div>
+      {/* ✅ Header & Footer are now global via _app.tsx */}
+      <HeroSection />
+      {/* Add other sections here: Services, Testimonials, Call to Action etc. */}
     </>
   );
 }
@@ -35,7 +28,6 @@ export default function Home() {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      // Load the 'common' namespace for translations
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
   };

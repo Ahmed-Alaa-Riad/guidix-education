@@ -29,5 +29,43 @@
       "scholarships": "Scholarships",
       "application": "Application"
     }
+  },
+
+  "fields": {
+    "formTitle": "Application Form",
+    "academicJourneyStep": "Take the first step towards your academic journey abroad",
+    "academicInfo": "Academic Information",
+    "personalInfo": "Personal Information",
+    "financialInfo": "Financial Information",
+    "additionalInfo": "Additional Information",
+    "privacyNote": "Your information is secure and will only be used to process your application. We respect your privacy and follow strict data protection guidelines.",
+    "destination": "Destination *",
+    "degree": "Degree *",
+    "major": "Major *",
+    "name": "Name *",
+    "phone": "Phone Number *",
+    "email": "Email Address",
+    "budget": "Budget *",
+    "budgetNote": "(USD/year)",
+    "referredBy": "Referred By"
+  },
+  "placeholders": {
+    "country": "Country",
+    "degree": "Degree",
+    "major": "Major",
+    "name": "Your full name",
+    "phone": "e.g. +20 123 456 7890",
+    "email": "you@example.com",
+    "budget": "Select budget range",
+    "referredBy": "Name or reference code"
+  },
+  "buttons": {
+    "submit": "Submit Application",
+    "submitting": "Submitting..."
+  },
+  "messages": {
+    "success": "Application submitted successfully!",
+    "failure": "Failed to send application. Please try again.",
+    "error": "An error occurred. Please try again."
   }
 }

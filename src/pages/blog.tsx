@@ -1,3 +1,14 @@
-export default function Blog() {
-  return <h1>Blog Page</h1>;
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+export default function Courses() {
+  return <div>Blog Page</div>;
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+    },
+  };
+};

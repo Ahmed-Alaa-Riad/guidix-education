@@ -12,13 +12,13 @@
 }
 
 /* Global styles */
-body {
+/* body {
   background-image: url("/BgImage1.jpg");
   background-size: contain;
   background-position: center;
   background-repeat: repeat; /* since it's a pattern */
-  position: relative;
-}
+  /* position: relative; */
+/* } */ 
 
 body::before {
   content: "";

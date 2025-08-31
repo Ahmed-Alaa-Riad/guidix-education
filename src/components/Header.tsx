@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -17,11 +18,19 @@ export default function Header() {
     <header className="fixed w-full z-50 bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center py-3 sm:py-4 px-4 sm:px-6 lg:px-12">
         {/* Logo */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="object-contain bg-secondary rounded-full"
+            priority
+          />
           <span className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">
             {t("header.logo")}
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 font-semibold uppercase tracking-wide text-dark text-sm xl:text-base">

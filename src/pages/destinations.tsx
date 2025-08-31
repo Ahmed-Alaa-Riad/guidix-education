@@ -1,59 +1,61 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import ReactCountryFlag from "react-country-flag";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // Type for country
 type Country = {
   name: string;
-  image: string;
+  code: string; // ISO country code
   info: string;
 };
 
 const countries: Country[] = [
   {
     name: "Germany",
-    image: "/Images/Germany.png",
+    code: "DE",
     info: "Study in top universities like LMU Munich and Heidelberg University.",
   },
   {
     name: "China",
-    image: "/Images/China.png",
+    code: "CN",
     info: "Study in world-class universities like Tsinghua and Peking University.",
   },
   {
     name: "UK",
-    image: "/Images/UK.png",
+    code: "GB",
     info: "Home to Oxford, Cambridge, and a rich cultural heritage.",
   },
   {
     name: "Canada",
-    image: "/Images/Canada.png",
+    code: "CA",
     info: "High-quality education with post-graduate work opportunities.",
   },
   {
     name: "Malaysia",
-    image: "/Images/Malaysia.png",
+    code: "MY",
     info: "A rapidly growing education hub in Asia.",
   },
   {
     name: "Hungary",
-    image: "/Images/Hungary.png",
+    code: "HU",
     info: "A hidden gem in Europe with affordable tuition.",
   },
   {
     name: "Poland",
-    image: "/Images/Poland.png",
+    code: "PL",
     info: "Affordable education with a rich cultural experience.",
   },
   {
     name: "Spain",
-    image: "/Images/Spain.png",
+    code: "ES",
     info: "Home to renowned universities and a vibrant culture.",
   },
   {
     name: "Turkey",
-    image: "/Images/Turkey.png",
+    code: "TR",
     info: "Cutting-edge technology, tradition, and global opportunities.",
   },
 ];
@@ -71,14 +73,15 @@ export default function Destinations() {
             onClick={() => setSelected(country)}
             className="relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer transform hover:scale-105 transition duration-300"
           >
-            {/* Country Image */}
-            <Image
-              src={country.image}
-              alt={country.name}
-              width={800}
-              height={400}
-              className="w-full h-32 sm:h-40 md:h-48 object-contain bg-white"
-            />
+            {/* Country Flag */}
+            <div className="flex items-center justify-center w-full h-32 sm:h-40 md:h-48 bg-white">
+              <ReactCountryFlag
+                countryCode={country.code}
+                svg
+                style={{ width: "80%", height: "100%" }}
+              />
+            </div>
+
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
               <p className="text-white text-lg sm:text-xl md:text-2xl font-extrabold">
@@ -101,14 +104,14 @@ export default function Destinations() {
               ✕
             </button>
 
-            {/* Country Image */}
-            <Image
-              src={selected.image}
-              alt={selected.name}
-              width={700}
-              height={500}
-              className="w-full max-h-64 sm:max-h-80 object-contain bg-white rounded-lg mb-4 sm:mb-6"
-            />
+            {/* Flag in Modal */}
+            <div className="flex items-center justify-center w-full max-h-64 sm:max-h-80 bg-white rounded-lg mb-4 sm:mb-6">
+              <ReactCountryFlag
+                countryCode={selected.code}
+                svg
+                style={{ width: "80%", height: "100%" }}
+              />
+            </div>
 
             {/* Title & Info */}
             <h3 className="text-2xl sm:text-3xl font-extrabold mb-3">
@@ -123,3 +126,12 @@ export default function Destinations() {
     </div>
   );
 }
+
+// 👇 Add this for translations
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+    },
+  };
+};

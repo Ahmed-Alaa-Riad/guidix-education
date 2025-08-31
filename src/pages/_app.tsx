@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,8 +17,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [locale]);
 
   return (
-    <>
-      <Component {...pageProps} />
+    <div className="min-h-screen flex flex-col">
+      {/* ✅ Global Header */}
+      <Header />
+
+      {/* Page content */}
+      <main className="flex-grow pt-16 sm:pt-20 lg:pt-24">
+        <Component {...pageProps} />
+      </main>
+
+      {/* ✅ Global Footer */}
+      <Footer />
 
       {/* WhatsApp FAB */}
       <a
@@ -31,7 +42,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           className="w-20 h-20 rounded-full"
         />
       </a>
-    </>
+    </div>
   );
 }
 
