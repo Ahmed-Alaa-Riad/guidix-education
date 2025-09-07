@@ -78,20 +78,20 @@ export default function Apply() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-6 sm:py-8 md:py-12 lg:py-16 px-3 sm:px-4 lg:px-6">
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-6 md:py-12 px-4 md:px-6">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-4 -right-4 w-24 sm:w-32 md:w-48 lg:w-64 h-24 sm:h-32 md:h-48 lg:h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-8 -left-8 w-32 sm:w-48 md:w-64 lg:w-80 h-32 sm:h-48 md:h-64 lg:h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-4 -right-4 w-32 md:w-48 lg:w-64 h-32 md:h-48 lg:h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-8 -left-8 w-48 md:w-64 lg:w-80 h-48 md:h-64 lg:h-80 bg-secondary/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto">
+      <div className="relative w-full max-w-2xl mx-auto">
         {/* Header Card */}
-        <div className="bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 mb-6 sm:mb-8">
+        <div className="bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl p-6 md:p-8 mb-6">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-r from-primary to-secondary rounded-full mb-4 sm:mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full mb-4">
               <svg
-                className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white"
+                className="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -104,49 +104,46 @@ export default function Apply() {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent pb-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight bg-primary bg-clip-text text-transparent pb-3">
               {t("fields.formTitle")}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-md mx-auto">
+            <p className="text-sm md:text-base lg:text-lg text-gray-600 max-w-lg mx-auto leading-relaxed">
               {t("fields.academicJourneyStep")}
             </p>
           </div>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white/90 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10">
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-6 sm:space-y-7 md:space-y-8"
-          >
+        <div className="bg-white/90 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl p-6 md:p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Academic Information Section */}
-            <div className="space-y-4 sm:space-y-5 md:space-y-6">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-primary border-l-4 border-primary pl-3 sm:pl-4">
+            <div className="space-y-4">
+              <h3 className="text-lg md:text-xl font-semibold text-secondary border-l-4 border-secondary pl-3">
                 {t("fields.academicInfo")}
               </h3>
 
               {/* Destination */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.destination")}
                 </label>
                 <div className="relative">
                   <input
                     value={formData.country}
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                     onChange={(e) =>
                       setFormData({ ...formData, country: e.target.value })
                     }
                     placeholder={t("placeholders.country")}
                     required
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
 
               {/* Degree */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.degree")}
                 </label>
                 <div className="relative">
@@ -157,15 +154,15 @@ export default function Apply() {
                     }
                     placeholder={t("placeholders.degree")}
                     required
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
 
               {/* Major */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.major")}
                 </label>
                 <div className="relative">
@@ -176,22 +173,22 @@ export default function Apply() {
                     }
                     placeholder={t("placeholders.major")}
                     required
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
             </div>
 
             {/* Personal Information Section */}
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 pt-6 sm:pt-8 border-t border-gray-200">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-secondary border-l-4 border-secondary pl-3 sm:pl-4">
+            <div className="space-y-4 pt-6 border-t border-gray-200">
+              <h3 className="text-lg md:text-xl font-semibold text-secondary border-l-4 border-secondary pl-3">
                 {t("fields.personalInfo")}
               </h3>
 
               {/* Name */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.name")}
                 </label>
                 <div className="relative">
@@ -202,17 +199,17 @@ export default function Apply() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     placeholder={t("placeholders.name")}
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
 
               {/* Phone & Email Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Phone */}
                 <div className="group">
-                  <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                  <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                     {t("fields.phone")}
                   </label>
                   <div className="relative">
@@ -224,15 +221,15 @@ export default function Apply() {
                         setFormData({ ...formData, phone: e.target.value })
                       }
                       placeholder={t("placeholders.phone")}
-                      className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                      className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="group">
-                  <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                  <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                     {t("fields.email")}
                   </label>
                   <div className="relative">
@@ -243,25 +240,25 @@ export default function Apply() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       placeholder={t("placeholders.email")}
-                      className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                      className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Financial Information Section */}
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 pt-6 sm:pt-8 border-t border-gray-200">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-primary border-l-4 border-primary pl-3 sm:pl-4">
+            <div className="space-y-4 pt-6 border-t border-gray-200">
+              <h3 className="text-lg md:text-xl font-semibold text-secondary border-l-4 border-secondary pl-3">
                 {t("fields.financialInfo")}
               </h3>
 
               {/* Budget */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.budget")}{" "}
-                  <span className="text-xs sm:text-sm md:text-base text-secondary/70 font-normal">
+                  <span className="text-sm text-secondary/70 font-normal">
                     {t("fields.budgetNote")}
                   </span>
                 </label>
@@ -272,7 +269,7 @@ export default function Apply() {
                     onChange={(e) =>
                       setFormData({ ...formData, budget: e.target.value })
                     }
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300 appearance-none cursor-pointer"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300 appearance-none cursor-pointer"
                   >
                     <option value="">{t("placeholders.budget")}</option>
                     <option>0 to 5000</option>
@@ -281,9 +278,9 @@ export default function Apply() {
                     <option>15,000 to 20,000</option>
                   </select>
                   {/* Custom dropdown arrow */}
-                  <div className="absolute inset-y-0 right-4 sm:right-5 md:right-6 flex items-center pointer-events-none">
+                  <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                     <svg
-                      className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
+                      className="w-5 h-5 text-gray-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -296,20 +293,20 @@ export default function Apply() {
                       />
                     </svg>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
             </div>
 
             {/* Additional Information Section */}
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 pt-6 sm:pt-8 border-t border-gray-200">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-secondary border-l-4 border-secondary pl-3 sm:pl-4">
+            <div className="space-y-4 pt-6 border-t border-gray-200">
+              <h3 className="text-lg md:text-xl font-semibold text-secondary border-l-4 border-secondary pl-3">
                 {t("fields.additionalInfo")}
               </h3>
 
               {/* Referred By */}
               <div className="group">
-                <label className="block text-primary font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg">
+                <label className="block text-primary font-semibold mb-2 text-sm md:text-base">
                   {t("fields.referredBy")}
                 </label>
                 <div className="relative">
@@ -319,33 +316,33 @@ export default function Apply() {
                       setFormData({ ...formData, referredBy: e.target.value })
                     }
                     placeholder={t("placeholders.referredBy")}
-                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
+                    className="w-full border-2 border-gray-200 bg-white/50 rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white focus:shadow-lg group-hover:border-gray-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
               </div>
             </div>
 
             {/* Submit Button */}
-            <div className="pt-6 sm:pt-8 md:pt-10">
+            <div className="pt-8">
               <button
                 type="submit"
                 disabled={loading}
-                className={`relative w-full bg-gradient-to-r from-primary to-secondary text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl text-base sm:text-lg md:text-xl font-bold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl ${
+                className={`relative w-full bg-primary text-white px-6 py-4 rounded-xl text-base font-bold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl ${
                   loading
                     ? "opacity-70 cursor-not-allowed scale-100 hover:scale-100"
                     : "hover:shadow-2xl"
-                } overflow-hidden`}
+                } overflow-hidden touch-manipulation`}
               >
                 {/* Button background animation */}
-                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#2F6244] to-primary opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
 
                 {/* Button content */}
-                <div className="relative flex items-center justify-center space-x-2 sm:space-x-3">
+                <div className="relative flex items-center justify-center space-x-2">
                   {loading ? (
                     <>
                       <svg
-                        className="animate-spin w-5 sm:w-6 h-5 sm:h-6 text-white"
+                        className="animate-spin w-5 h-5 text-white"
                         fill="none"
                         viewBox="0 0 24 24"
                       >
@@ -368,7 +365,7 @@ export default function Apply() {
                   ) : (
                     <>
                       <svg
-                        className="w-5 sm:w-6 h-5 sm:h-6"
+                        className="w-5 h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

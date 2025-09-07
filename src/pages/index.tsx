@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 // Import required for translations
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Stats from "@/components/Stats";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
 
       {/* ✅ Header & Footer are now global via _app.tsx */}
       <HeroSection />
+      <Stats />
       {/* Add other sections here: Services, Testimonials, Call to Action etc. */}
     </>
   );

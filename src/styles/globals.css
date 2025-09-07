@@ -19,7 +19,11 @@
   background-repeat: repeat; /* since it's a pattern */
   /* position: relative; */
 /* } */ 
-
+body{
+  margin: 0;
+  padding: 0;
+  
+}
 body::before {
   content: "";
   position: fixed;
